@@ -11,7 +11,7 @@
  Target Server Version : 80039 (8.0.39)
  File Encoding         : 65001
 
- Date: 22/03/2025 14:11:05
+ Date: 25/03/2025 13:05:51
 */
 
 SET NAMES utf8mb4;
@@ -100,6 +100,14 @@ CREATE TABLE `jurusan`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of jurusan
+-- ----------------------------
+INSERT INTO `jurusan` VALUES (2, 'Teknik Informatika', 'Sarjana');
+INSERT INTO `jurusan` VALUES (3, 'Sistem Informasi', 'Sarjana');
+INSERT INTO `jurusan` VALUES (4, 'Manajemen Informasi', 'Diploma');
+INSERT INTO `jurusan` VALUES (5, 'Teknik Komputer', 'Diploma');
+
+-- ----------------------------
 -- Table structure for mahasiswa
 -- ----------------------------
 DROP TABLE IF EXISTS `mahasiswa`;
@@ -144,6 +152,16 @@ CREATE TABLE `menu`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of menu
+-- ----------------------------
+INSERT INTO `menu` VALUES (1, 'Admin');
+INSERT INTO `menu` VALUES (2, 'User');
+INSERT INTO `menu` VALUES (3, 'Dosen');
+INSERT INTO `menu` VALUES (4, 'Mahasiswa');
+INSERT INTO `menu` VALUES (5, 'Menu');
+INSERT INTO `menu` VALUES (6, 'Informasi');
+
+-- ----------------------------
 -- Table structure for menu_akses
 -- ----------------------------
 DROP TABLE IF EXISTS `menu_akses`;
@@ -153,6 +171,24 @@ CREATE TABLE `menu_akses`  (
   `id_menu` int NOT NULL,
   PRIMARY KEY (`id_akses`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 59 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of menu_akses
+-- ----------------------------
+INSERT INTO `menu_akses` VALUES (1, 1, 1);
+INSERT INTO `menu_akses` VALUES (5, 2, 2);
+INSERT INTO `menu_akses` VALUES (6, 3, 3);
+INSERT INTO `menu_akses` VALUES (7, 4, 4);
+INSERT INTO `menu_akses` VALUES (16, 3, 2);
+INSERT INTO `menu_akses` VALUES (17, 4, 2);
+INSERT INTO `menu_akses` VALUES (38, 4, 6);
+INSERT INTO `menu_akses` VALUES (39, 2, 6);
+INSERT INTO `menu_akses` VALUES (40, 3, 6);
+INSERT INTO `menu_akses` VALUES (45, 1, 2);
+INSERT INTO `menu_akses` VALUES (46, 1, 5);
+INSERT INTO `menu_akses` VALUES (54, 1, 6);
+INSERT INTO `menu_akses` VALUES (57, 1, 3);
+INSERT INTO `menu_akses` VALUES (58, 1, 4);
 
 -- ----------------------------
 -- Table structure for menu_short
@@ -171,6 +207,15 @@ CREATE TABLE `menu_short`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of menu_short
+-- ----------------------------
+INSERT INTO `menu_short` VALUES (1, 'Mahasiswa Terdata', 'mahasiswa', 'card bg-primary shadow h-100 py-2', 'text-xs font-weight-bold text-light text-uppercase mb-1', 'h5 mb-0 font-weight-bold text-light', 'fas fa-user fa-2x text-light', 'admin/dataMHS');
+INSERT INTO `menu_short` VALUES (2, 'Dosen Terdata', 'dosen', 'card bg-success shadow h-100 py-2', 'text-xs font-weight-bold text-light text-uppercase mb-1', 'h5 mb-0 font-weight-bold text-light', 'fas fa-user fa-2x text-light', 'admin/dataDosen');
+INSERT INTO `menu_short` VALUES (3, 'Matkul Terdata', 'matkul', 'card bg-info shadow h-100 py-2', 'text-xs font-weight-bold text-light text-uppercase mb-1', 'h5 mb-0 font-weight-bold text-light', 'fas fa-book fa-2x text-light', 'admin/dataMatkul');
+INSERT INTO `menu_short` VALUES (5, 'Jurusan Terdata', 'jurusan', 'card bg-primary shadow h-100 py-2', 'text-xs font-weight-bold text-light text-uppercase mb-1', 'h5 mb-0 font-weight-bold text-light', 'fas fa-user-graduate fa-2x text-light', 'admin/dataJurusan');
+INSERT INTO `menu_short` VALUES (6, 'Akun User', 'user', 'card bg-info shadow h-100 py-2', 'text-xs font-weight-bold text-light text-uppercase mb-1', 'h5 mb-0 font-weight-bold text-light', 'fas fa-user-tie fa-2x text-light', 'admin/dataUser');
+
+-- ----------------------------
 -- Table structure for menu_sub
 -- ----------------------------
 DROP TABLE IF EXISTS `menu_sub`;
@@ -183,6 +228,33 @@ CREATE TABLE `menu_sub`  (
   `is_active` int NOT NULL,
   PRIMARY KEY (`id_submenu`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of menu_sub
+-- ----------------------------
+INSERT INTO `menu_sub` VALUES (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-home', 1);
+INSERT INTO `menu_sub` VALUES (2, 2, 'Profil Saya', 'user', 'fas fa-fw fa-user', 1);
+INSERT INTO `menu_sub` VALUES (3, 3, 'Siakad Dosen', 'dosen', 'fas fa-fw fa-home', 1);
+INSERT INTO `menu_sub` VALUES (4, 4, 'Siakad Mahasiswa', 'mahasiswa', 'fas fa-fw fa-home', 1);
+INSERT INTO `menu_sub` VALUES (6, 1, 'Account', 'admin/dataUser', 'fas fa-fw fa-user-tie', 1);
+INSERT INTO `menu_sub` VALUES (7, 4, 'Hasil Studi', 'mahasiswa/studi', 'fas fa-fw fa-tasks', 1);
+INSERT INTO `menu_sub` VALUES (8, 3, 'Absensi', 'dosen/absen', 'fas fa-fw fa-user', 1);
+INSERT INTO `menu_sub` VALUES (9, 3, 'Hasil Studi', 'dosen/studi', 'fas fa-fw fa-tasks', 1);
+INSERT INTO `menu_sub` VALUES (10, 5, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1);
+INSERT INTO `menu_sub` VALUES (11, 1, 'Data Mahasiswa', 'admin/dataMHS', 'fas fa-fw fa-user', 1);
+INSERT INTO `menu_sub` VALUES (12, 1, 'Data Dosen', 'admin/dataDosen', 'fas fa-fw fa-user', 1);
+INSERT INTO `menu_sub` VALUES (13, 1, 'Data Jurusan', 'admin/dataJurusan', 'fas fa-fw fa-user-graduate', 1);
+INSERT INTO `menu_sub` VALUES (14, 1, 'Data Matkul', 'admin/dataMatkul', 'fas fa-fw fa-book', 1);
+INSERT INTO `menu_sub` VALUES (15, 5, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1);
+INSERT INTO `menu_sub` VALUES (18, 1, 'Data Role', 'admin/dataRole', 'fas fa-fw fa-users', 1);
+INSERT INTO `menu_sub` VALUES (19, 5, 'Shortcut Management', 'menu/short', 'fas fa-fw fa-folder-open', 1);
+INSERT INTO `menu_sub` VALUES (22, 6, 'Info Website', 'user/info', 'fas fa-fw fa-info-circle', 1);
+INSERT INTO `menu_sub` VALUES (24, 3, 'Dokumen Ajar', 'dosen/dokumen', 'fas fa-fw fa-folder', 1);
+INSERT INTO `menu_sub` VALUES (25, 4, 'Materi dan Tugas', 'mahasiswa/dokumen', 'fas fa-fw fa-folder', 1);
+INSERT INTO `menu_sub` VALUES (26, 4, 'Absensi', 'mahasiswa/absensi', 'fas fa-fw fa-check-square', 1);
+INSERT INTO `menu_sub` VALUES (27, 3, 'Quiz', 'dosen/quiz', 'fas fa-book', 1);
+INSERT INTO `menu_sub` VALUES (28, 4, 'Quiz', 'mahasiswa/quiz', 'fas fa-book', 1);
+INSERT INTO `menu_sub` VALUES (29, 3, 'formabsen', 'dosen/formabsen', 'fas fa-book', 0);
 
 -- ----------------------------
 -- Table structure for quiz
@@ -200,6 +272,10 @@ CREATE TABLE `quiz`  (
   `date_created` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_quiz`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of quiz
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user
@@ -229,6 +305,14 @@ CREATE TABLE `user_role`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of user_role
+-- ----------------------------
+INSERT INTO `user_role` VALUES (1, 'Administrator');
+INSERT INTO `user_role` VALUES (2, 'Member');
+INSERT INTO `user_role` VALUES (3, 'Dosen');
+INSERT INTO `user_role` VALUES (4, 'Mahasiswa');
+
+-- ----------------------------
 -- Table structure for user_token
 -- ----------------------------
 DROP TABLE IF EXISTS `user_token`;
@@ -238,7 +322,11 @@ CREATE TABLE `user_token`  (
   `token` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `date_created` int NOT NULL,
   PRIMARY KEY (`id_token`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_token
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for waktu_shift
@@ -251,5 +339,11 @@ CREATE TABLE `waktu_shift`  (
   `shift_akhir` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_shift`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of waktu_shift
+-- ----------------------------
+INSERT INTO `waktu_shift` VALUES (1, 'P', '08:00:00', '12:00:00');
+INSERT INTO `waktu_shift` VALUES (2, 'M', '19:00:00', '23:00:00');
 
 SET FOREIGN_KEY_CHECKS = 1;
